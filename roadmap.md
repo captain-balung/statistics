@@ -9,19 +9,17 @@
 
 ## 進度摘要（自動聚合）
 
-- **整體**：0%（0 / 待計算個葉節點）
-- **當前 Phase**：Phase 0 進行中
-- **當前焦點**：0.1.1 首頁已 push；接續 0.1.2–0.2、0.4；**Vercel 待人類於 push 後 Import**
-- **MVP 目標**：模組 1 全功能（F1-1、F1-2、F1-3）+ 探索模式
+- **整體**：MVP 模組 1 已完成（Phase 0–3 核心）
+- **當前 Phase**：Phase 3 模組 1 ✅（F1-1～F1-3 探索模式）
+- **當前焦點**：模組 4+ 依 roadmap 後續 Phase
+- **MVP 目標**：模組 1 全功能（F1-1、F1-2、F1-3）+ 探索模式 ✅
 - **近 1 小時新完成**：Kickoff 決策 D-001～D-003 已裁定（見 `kickoff-decisions.md`）
 
 ---
 
 ## 當前焦點
 
-🔄 **Phase 0.1.1 已完成**（Next.js 首頁已 push 至 [captain-balung/statistics](https://github.com/captain-balung/statistics)）。
-
-下一步 AI：`0.1.2` strict 驗證、`0.2` lint/CI、`0.4` 三欄 layout。人類：**push 後**再連 Vercel（見 checklist 步驟 3）。
+✅ **MVP 模組 1 已上線**（[production](https://statistics-puce.vercel.app)）：三欄 layout、F1-1 資料點實驗室、F1-2 平衡木、F1-3 標準差伸縮；模組 2–7 placeholder。
 
 ---
 
@@ -69,7 +67,9 @@
 #### 0.1 專案初始化 ⬜
 
 - ✅ 0.1.1 建立 Next.js 專案（手動 scaffold；`npm install`）
-  - 驗證：`npm run build` 通過；首頁顯示「統計遊樂場」與七大模組列表
+- ✅ 0.1.2–0.1.5 strict TS、Tailwind、依賴、Vitest
+- ✅ 0.2 ESLint、Prettier、CI workflow
+- ✅ 0.4 三欄 layout + 7 模組路由
 - ⬜ 0.1.2 設定 `tsconfig.json` 為 strict 模式
   - 驗證：`tsc --noEmit` 通過且 strict 相關選項皆 `true`
 - ⬜ 0.1.3 安裝並設定 Tailwind CSS

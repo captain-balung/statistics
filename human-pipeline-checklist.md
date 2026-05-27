@@ -10,10 +10,10 @@
 | # | 步驟 | 負責 | 狀態 |
 |---|------|------|------|
 | 1 | 建立 GitHub 空 repo | 人類 | ✅ `captain-balung/statistics` |
-| 2 | 授權 AI 本輪可 `git push` | 人類（對話一句） | ⬜ |
+| 2 | 授權 AI 本輪可 `git push` | 人類（對話一句） | ✅ |
 | 3 | 連接 Vercel ↔ GitHub | 人類 | ✅ production：https://statistics-puce.vercel.app |
 | 4 | 確認 Vercel production = `main` | 人類 | ✅ 預設即 `main`（見下方「第五步找不到」說明） |
-| 5 | 提供 repo URL 給 AI | 人類 | ⬜ |
+| 5 | 提供 repo URL 給 AI | 人類 | ✅ |
 | 6 | （可選）邀請協作者 / 確認 Cursor 有 push 權 | 人類 | ⬜ |
 
 AI 在你回覆 URL +「Pipeline 已暢通」後會做：`git init`、首次 commit（文件 + 程式）、`remote`、`push`、Phase 0 起點。
