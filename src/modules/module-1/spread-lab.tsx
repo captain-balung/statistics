@@ -4,6 +4,7 @@ import { createRng, randomNormal } from '@lib/rng'
 import { useMemo, useState } from 'react'
 import { Slider } from '@/components/controls/Slider'
 import { Button } from '@/components/controls/Button'
+import { LabControls } from '@/components/learning/LabControls'
 import { ExplanationPanel } from '@/components/explanation/ExplanationPanel'
 import { LiveValueDisplay } from '@/components/explanation/LiveValueDisplay'
 import { ThreeColumnLayout } from '@/components/layout/ThreeColumnLayout'
@@ -56,8 +57,7 @@ export function SpreadLab() {
   return (
     <ThreeColumnLayout
       controls={
-        <div className="space-y-5">
-          <p className="font-mono text-xs uppercase text-accent-blue">探索模式</p>
+        <LabControls>
           <p className="text-sm text-ink-soft">{copy.summary}</p>
           <Slider
             label="分布 A 的標準差 σ"
@@ -81,7 +81,7 @@ export function SpreadLab() {
           <p className="text-xs text-ink-mute">
             兩組資料平均數皆固定為 {MU}；調整 σ 觀察曲線與散點的伸縮。
           </p>
-        </div>
+        </LabControls>
       }
       visualization={
         <svg

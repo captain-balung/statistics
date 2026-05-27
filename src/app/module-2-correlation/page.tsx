@@ -1,5 +1,5 @@
-import { ModulePlaceholder } from '@/components/layout/ModulePlaceholder'
+import { redirect } from 'next/navigation'
 
-export default function Module2Page() {
-  return <ModulePlaceholder moduleNumber={2} title="相關與回歸分析" />
+export default function Page() {
+  redirect('/module-2-correlation/scatter')
 }

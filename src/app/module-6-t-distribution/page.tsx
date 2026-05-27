@@ -1,5 +1,5 @@
-import { ModulePlaceholder } from '@/components/layout/ModulePlaceholder'
+import { TDistributionLab } from '@/modules/module-6/t-distribution-lab'
 
-export default function Module6Page() {
-  return <ModulePlaceholder moduleNumber={6} title="T 分配" />
+export default function Page() {
+  return <TDistributionLab />
 }

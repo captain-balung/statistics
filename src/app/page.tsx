@@ -1,13 +1,13 @@
 import Link from 'next/link'
 
 const MODULES = [
-  { n: 1, title: '敘述統計量', slug: 'module-1-descriptive', ready: true },
-  { n: 2, title: '相關與回歸分析', slug: 'module-2-correlation', ready: false },
-  { n: 3, title: '機率與二項式分配', slug: 'module-3-probability', ready: false },
-  { n: 4, title: '常態分配', slug: 'module-4-normal', ready: false },
-  { n: 5, title: '母體與抽樣分布', slug: 'module-5-sampling', ready: false },
-  { n: 6, title: 'T 分配', slug: 'module-6-t-distribution', ready: false },
-  { n: 7, title: '假設檢定', slug: 'module-7-hypothesis', ready: false },
+  { n: 1, title: '敘述統計量', slug: 'module-1-descriptive', entry: 'data-lab' },
+  { n: 2, title: '相關與回歸分析', slug: 'module-2-correlation', entry: 'scatter' },
+  { n: 3, title: '機率與二項式分配', slug: 'module-3-probability', entry: 'gamble' },
+  { n: 4, title: '常態分配', slug: 'module-4-normal', entry: 'curve' },
+  { n: 5, title: '母體與抽樣分布', slug: 'module-5-sampling', entry: '' },
+  { n: 6, title: 'T 分配', slug: 'module-6-t-distribution', entry: '' },
+  { n: 7, title: '假設檢定', slug: 'module-7-hypothesis', entry: 'intro' },
 ] as const
 
 export default function HomePage() {
@@ -26,32 +26,24 @@ export default function HomePage() {
       <section className="mt-12 rounded-md border border-[var(--color-rule)] bg-[var(--color-bg-elevated)] p-6">
         <h2 className="font-display text-xl text-ink">七大模組</h2>
         <ol className="mt-6 space-y-3">
-          {MODULES.map((m) => (
-            <li
-              key={m.slug}
-              className="flex items-baseline gap-3 border-b border-[var(--color-rule)] pb-3 last:border-0 last:pb-0"
-            >
-              <span className="font-mono text-lg text-accent-yellow">{m.n}</span>
-              {m.ready ? (
+          {MODULES.map((m) => {
+            const href = m.entry ? `/${m.slug}/${m.entry}` : `/${m.slug}`
+            return (
+              <li
+                key={m.slug}
+                className="flex items-baseline gap-3 border-b border-[var(--color-rule)] pb-3 last:border-0 last:pb-0"
+              >
+                <span className="font-mono text-lg text-accent-yellow">{m.n}</span>
                 <Link
-                  href={`/${m.slug}/data-lab`}
+                  href={href}
                   className="text-ink underline decoration-accent-blue decoration-2 underline-offset-2 hover:text-accent-blue"
                 >
                   {m.title}
                 </Link>
-              ) : (
-                <Link
-                  href={`/${m.slug}`}
-                  className="text-ink hover:text-accent-blue"
-                >
-                  {m.title}
-                </Link>
-              )}
-              <span className="ml-auto font-mono text-xs text-ink-mute">
-                {m.ready ? '可探索' : '即將推出'}
-              </span>
-            </li>
-          ))}
+                <span className="ml-auto font-mono text-xs text-accent-blue">可探索</span>
+              </li>
+            )
+          })}
         </ol>
       </section>
     </main>

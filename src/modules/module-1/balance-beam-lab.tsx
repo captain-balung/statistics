@@ -4,6 +4,7 @@ import { mean } from '@lib/statistics/descriptive'
 import { motion } from 'framer-motion'
 import { useMemo, useState } from 'react'
 import { Button } from '@/components/controls/Button'
+import { LabControls } from '@/components/learning/LabControls'
 import { Slider } from '@/components/controls/Slider'
 import { ExplanationPanel } from '@/components/explanation/ExplanationPanel'
 import { LiveValueDisplay } from '@/components/explanation/LiveValueDisplay'
@@ -42,8 +43,7 @@ export function BalanceBeamLab() {
   return (
     <ThreeColumnLayout
       controls={
-        <div className="space-y-5">
-          <p className="font-mono text-xs uppercase text-accent-blue">探索模式</p>
+        <LabControls>
           <p className="text-sm text-ink-soft">{copy.summary}</p>
           <Slider
             label="新增砝碼位置"
@@ -57,7 +57,7 @@ export function BalanceBeamLab() {
           <Button variant="secondary" onClick={reset}>
             重置
           </Button>
-        </div>
+        </LabControls>
       }
       visualization={
         <div className="mx-auto w-full max-w-2xl">

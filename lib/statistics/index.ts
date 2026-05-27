@@ -1,2 +1,7 @@
 export * from './result'
 export * from './descriptive'
+export * from './correlation'
+export * from './distributions'
+export * from './conversions'
+export * from './sampling'
+export * from './inference'

@@ -1,5 +1,5 @@
-import { ModulePlaceholder } from '@/components/layout/ModulePlaceholder'
+import { SamplingLab } from '@/modules/module-5/sampling-lab'
 
-export default function Module5Page() {
-  return <ModulePlaceholder moduleNumber={5} title="母體與抽樣分布" />
+export default function Page() {
+  return <SamplingLab />
 }

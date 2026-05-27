@@ -9,17 +9,17 @@
 
 ## 進度摘要（自動聚合）
 
-- **整體**：MVP 模組 1 已完成（Phase 0–3 核心）
-- **當前 Phase**：Phase 3 模組 1 ✅（F1-1～F1-3 探索模式）
-- **當前焦點**：模組 4+ 依 roadmap 後續 Phase
-- **MVP 目標**：模組 1 全功能（F1-1、F1-2、F1-3）+ 探索模式 ✅
+- **整體**：七大模組互動頁面已上線（spec 功能清單 F1–F7 核心實作）
+- **當前 Phase**：Phase 10–11 部分完成（學習模式切換器全站；模擬類含開始/暫停/重置）
+- **當前焦點**：內容審查、Playwright E2E、Lighthouse 實測（待運行）
+- **Production**：https://statistics-puce.vercel.app
 - **近 1 小時新完成**：Kickoff 決策 D-001～D-003 已裁定（見 `kickoff-decisions.md`）
 
 ---
 
 ## 當前焦點
 
-✅ **MVP 模組 1 已上線**（[production](https://statistics-puce.vercel.app)）：三欄 layout、F1-1 資料點實驗室、F1-2 平衡木、F1-3 標準差伸縮；模組 2–7 placeholder。
+✅ **全模組互動已上線**（[production](https://statistics-puce.vercel.app)）：模組 1–7 共 22 個子實驗頁；`/lib/statistics` 完整；四種學習模式切換器已接入各實驗室左欄。
 
 ---
 

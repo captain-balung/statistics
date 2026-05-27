@@ -3,6 +3,7 @@
 import { mean, median, standardDeviation } from '@lib/statistics/descriptive'
 import { useCallback, useMemo, useRef, useState } from 'react'
 import { Button } from '@/components/controls/Button'
+import { LabControls } from '@/components/learning/LabControls'
 import { LiveValueDisplay } from '@/components/explanation/LiveValueDisplay'
 import { ExplanationPanel } from '@/components/explanation/ExplanationPanel'
 import { ThreeColumnLayout } from '@/components/layout/ThreeColumnLayout'
@@ -93,8 +94,7 @@ export function DataPointLab() {
   return (
     <ThreeColumnLayout
       controls={
-        <div className="space-y-5">
-          <p className="font-mono text-xs uppercase text-accent-blue">探索模式</p>
+        <LabControls>
           <p className="text-sm text-ink-soft">{copy.summary}</p>
           <Button variant="secondary" onClick={reset}>
             重置資料
@@ -109,7 +109,7 @@ export function DataPointLab() {
           <p className="text-xs text-ink-mute">
             在數線上點擊可新增資料點；拖曳圓點可改變數值（至少保留 2 點）。
           </p>
-        </div>
+        </LabControls>
       }
       visualization={
         <svg

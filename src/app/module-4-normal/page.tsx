@@ -1,5 +1,5 @@
-import { ModulePlaceholder } from '@/components/layout/ModulePlaceholder'
+import { redirect } from 'next/navigation'
 
-export default function Module4Page() {
-  return <ModulePlaceholder moduleNumber={4} title="常態分配" />
+export default function Page() {
+  redirect('/module-4-normal/curve')
 }
