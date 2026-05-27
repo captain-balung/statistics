@@ -98,6 +98,11 @@
   - 決定：**AI 撰寫繁中草稿，頁面不標「待審」**；人類事後抽查。MVP = **模組 1 全功能 F1-1～F1-3** + 探索模式。
   - 後果：開發不阻塞；人類需安排抽查或 Phase 11 審稿。教學錯誤風險由 AI 對照教科書測試 + 不確定時停下詢問緩解。
 
+### [2026-05-27T12:00:00+08:00] 變更 | 首次 push：Next.js 首頁 + 工程骨架
+- 觸發來源：人類指示（repo 就緒；Vercel 延後至 push 後）
+- 風險等級：低
+- 內容：手動建立 Next.js 15 + TypeScript strict + Tailwind + design tokens；首頁列出七大模組（即將推出）。`npm run build` 與 `lint` 通過。推送至 `https://github.com/captain-balung/statistics` main。套件管理暫用 npm（本機 pnpm/corepack 無權限）。
+
 ### [2026-05-27T00:00:00+08:00] 變更 | 新增管線文件 kickoff-decisions、human-pipeline-checklist
 - 觸發來源：人類指示
 - 風險等級：低

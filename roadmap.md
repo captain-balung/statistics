@@ -10,8 +10,8 @@
 ## 進度摘要（自動聚合）
 
 - **整體**：0%（0 / 待計算個葉節點）
-- **當前 Phase**：尚未開始（**管線前置**：等人類完成 `human-pipeline-checklist.md`）
-- **當前焦點**：人類建立 GitHub repo + Vercel 連線 → 回覆 URL 後 AI 從 Phase 0.1.1 開跑
+- **當前 Phase**：Phase 0 進行中
+- **當前焦點**：0.1.1 首頁已 push；接續 0.1.2–0.2、0.4；**Vercel 待人類於 push 後 Import**
 - **MVP 目標**：模組 1 全功能（F1-1、F1-2、F1-3）+ 探索模式
 - **近 1 小時新完成**：Kickoff 決策 D-001～D-003 已裁定（見 `kickoff-decisions.md`）
 
@@ -19,11 +19,9 @@
 
 ## 當前焦點
 
-🔄 **人類管線清單**（`human-pipeline-checklist.md`）— 約 20–30 分鐘，做一次即可。
+🔄 **Phase 0.1.1 已完成**（Next.js 首頁已 push 至 [captain-balung/statistics](https://github.com/captain-balung/statistics)）。
 
-AI 待機條件：對話回覆「Pipeline 已暢通」+ repo URL +（建議）授權本輪 `git push`。
-
-裁定後第一步：`Phase 0.1.1` → `pnpm create next-app` …
+下一步 AI：`0.1.2` strict 驗證、`0.2` lint/CI、`0.4` 三欄 layout。人類：**push 後**再連 Vercel（見 checklist 步驟 3）。
 
 ---
 
@@ -32,7 +30,8 @@ AI 待機條件：對話回覆「Pipeline 已暢通」+ repo URL +（建議）�
 - ✅ **D-001 已裁定**：Vercel 預設 `*.vercel.app` 為 production，暫不綁自訂網域
 - ✅ **D-002 已裁定**：第一版零 analytics
 - ✅ **D-003 已裁定**：AI 繁中草稿，不標待審，人類事後抽查
-- ⛔ **待人類執行**：GitHub 空 repo + Vercel import + 提供 repo URL（見 `human-pipeline-checklist.md`）
+- ✅ **GitHub repo** 已就緒並完成首次 push
+- ⛔ **待人類執行**：Vercel Import（建議現在可做，repo 已有 Next.js）
 
 ---
 
@@ -69,8 +68,8 @@ AI 待機條件：對話回覆「Pipeline 已暢通」+ repo URL +（建議）�
 
 #### 0.1 專案初始化 ⬜
 
-- ⬜ 0.1.1 執行 `pnpm create next-app` 建立專案
-  - 驗證：`pnpm dev` 啟動後 `localhost:3000` 顯示預設頁面
+- ✅ 0.1.1 建立 Next.js 專案（手動 scaffold；`npm install`）
+  - 驗證：`npm run build` 通過；首頁顯示「統計遊樂場」與七大模組列表
 - ⬜ 0.1.2 設定 `tsconfig.json` 為 strict 模式
   - 驗證：`tsc --noEmit` 通過且 strict 相關選項皆 `true`
 - ⬜ 0.1.3 安裝並設定 Tailwind CSS
