@@ -1,65 +1,92 @@
-# Statistics Playground
+# Statistics Playground（統計遊樂場）
 
-## 一句話描述
+讓高中與大學生「看見」統計概念如何運作的互動實驗網站——不是網頁版 SPSS。
 
-讓高中與大學生「看見」統計概念如何運作的互動實驗網站。
+**正式站（production）**：[https://statistics-puce.vercel.app](https://statistics-puce.vercel.app)  
+**原始碼**：[github.com/captain-balung/statistics](https://github.com/captain-balung/statistics)
 
-## 安裝方式
+---
+
+## 快速開始
 
 ### 環境需求
 
 - Node.js ≥ 20.x
-- pnpm ≥ 9.x（或 npm ≥ 10.x）
+- npm ≥ 10.x（專案目前以 `package-lock.json` 管理；亦可用 pnpm，需自行產生 lockfile）
 
-### 安裝指令
-
-```bash
-git clone <repo-url> statistics-playground
-cd statistics-playground
-pnpm install
-```
-
-## 使用範例
-
-啟動開發伺服器：
+### 安裝與開發
 
 ```bash
-pnpm dev
+git clone https://github.com/captain-balung/statistics.git
+cd statistics
+npm install
+npm run dev
 ```
 
-開啟瀏覽器到 `http://localhost:3000`，預設會載入「敘述統計量」模組。
+瀏覽器開啟 [http://localhost:3000](http://localhost:3000)。首頁列出七大模組；進入任一實驗後為 **左控制／中視覺／右解釋** 三欄式操作。
 
-打開模組頁面後，左側拖動滑桿、中間圖表即時變化、右側顯示概念解釋——這就是整個網站的標準操作模式。
-
-建置正式版：
+### 建置、測試、檢查
 
 ```bash
-pnpm build
-pnpm start
+npm run build    # 正式建置
+npm run start    # 預覽建置結果
+npm test         # Vitest 單元測試（/lib/statistics、/lib/rng）
+npm run lint     # ESLint
+npm run format:check   # Prettier
 ```
 
-執行測試：
+部署：push 至 `main` 後由 [Vercel](https://vercel.com) 自動部署（已連接 GitHub repo）。
 
-```bash
-pnpm test
+---
+
+## 七大模組與路由
+
+| 模組 | 入口路徑 | 子實驗 |
+|------|----------|--------|
+| 1 敘述統計量 | `/module-1-descriptive` | [資料點](https://statistics-puce.vercel.app/module-1-descriptive/data-lab) · [平衡木](https://statistics-puce.vercel.app/module-1-descriptive/balance-beam) · [標準差](https://statistics-puce.vercel.app/module-1-descriptive/spread) |
+| 2 相關與回歸 | `/module-2-correlation` | [散佈圖](https://statistics-puce.vercel.app/module-2-correlation/scatter) · [拖曳 r](https://statistics-puce.vercel.app/module-2-correlation/drag-r) · [回歸誤差](https://statistics-puce.vercel.app/module-2-correlation/sse) |
+| 3 機率 | `/module-3-probability` | [賭博](https://statistics-puce.vercel.app/module-3-probability/gamble) · [二項式](https://statistics-puce.vercel.app/module-3-probability/binomial) · [大數法則](https://statistics-puce.vercel.app/module-3-probability/lln) |
+| 4 常態分配 | `/module-4-normal` | [曲線](https://statistics-puce.vercel.app/module-4-normal/curve) · [面積](https://statistics-puce.vercel.app/module-4-normal/area) · [CLT](https://statistics-puce.vercel.app/module-4-normal/clt) · [Z/PR](https://statistics-puce.vercel.app/module-4-normal/z-pr) |
+| 5 抽樣分布 | `/module-5-sampling` | 抽樣分布模擬 |
+| 6 T 分配 | `/module-6-t-distribution` | 從母體生成 t |
+| 7 假設檢定 | `/module-7-hypothesis` | [總覽](https://statistics-puce.vercel.app/module-7-hypothesis/intro) · [符號](https://statistics-puce.vercel.app/module-7-hypothesis/sign) · [Z](https://statistics-puce.vercel.app/module-7-hypothesis/z-test) · [單樣本 t](https://statistics-puce.vercel.app/module-7-hypothesis/t-one) · [獨立 t](https://statistics-puce.vercel.app/module-7-hypothesis/t-two) · [成對 t](https://statistics-puce.vercel.app/module-7-hypothesis/t-paired) |
+
+每個實驗室左欄可切換 **探索／引導／挑戰／模擬**；含動畫的模擬（如 CLT、大數法則）在 **模擬** 模式下提供開始／暫停／重置。
+
+---
+
+## 專案文件（協作與維護）
+
+| 文件 | 用途 |
+|------|------|
+| [`spec.md`](spec.md) | 產品精神、功能清單、驗收條件、工程紅線 |
+| [`design.md`](design.md) | 技術選型、目錄結構、設計 token、部署 URL |
+| [`roadmap.md`](roadmap.md) | Phase 進度與 WBS（**收工時先看「當前狀態」**） |
+| [`ai-rules.md`](ai-rules.md) | AI 可／需確認／禁止事項 |
+| [`kickoff-decisions.md`](kickoff-decisions.md) | 人類已裁定決策（D-001～D-003 等） |
+| [`human-pipeline-checklist.md`](human-pipeline-checklist.md) | 帳號與部署一次性清單（已完成） |
+| [`log.md`](log.md) | 變更與決策日誌（append-only） |
+
+---
+
+## 程式結構（摘要）
+
+```
+/lib/statistics/     # 統計運算（元件不得重複實作）
+/lib/rng/            # 可種子化亂數
+/src/app/            # Next.js 路由
+/src/modules/        # 各模組互動實驗
+/src/components/     # 共用 UI（三欄、滑桿、解釋區等）
+/content/modules/    # 教學文字與常見誤解
+/tests/unit/         # Vitest
 ```
 
-## 主要功能
+詳見 `design.md` 系統結構一節。
 
-本網站包含 7 大教學模組（每個模組的細節請見 `spec.md` 的功能清單）：
+---
 
-- **模組 1**：敘述統計量（資料拖曳、平均數平衡木、標準差伸縮）
-- **模組 2**：相關與回歸分析（散佈圖生成、Pearson r、回歸線誤差）
-- **模組 3**：機率與二項式分配（賭博模擬、二項式實驗、大數法則）
-- **模組 4**：常態分配（曲線互動、面積機率、中央極限定理、Z/PR 換算）
-- **模組 5**：母體分布與抽樣分布模擬器
-- **模組 6**：T 分配模擬器
-- **模組 7**：假設檢定（總體動畫、符號檢定、Z 檢定、三種 T 檢定）
-
-每個模組都有「探索／引導／挑戰／模擬」四種學習模式。
-
-## 授權與聯絡
+## 授權與回報
 
 - 授權：MIT
-- 回報問題：請於 GitHub Issues 開單，附上瀏覽器版本與重現步驟
-- 內容錯誤回報：在頁面右下角點「回報內容問題」按鈕
+- 問題回報：[GitHub Issues](https://github.com/captain-balung/statistics/issues)（請附瀏覽器版本與重現步驟）
+- 教學內容：AI 繁中草稿，建議統計教師事後抽查（見 `kickoff-decisions.md` D-003）

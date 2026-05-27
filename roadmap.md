@@ -7,19 +7,39 @@
 
 ---
 
-## 進度摘要（自動聚合）
+## 進度摘要（2026-05-27 收工）
 
-- **整體**：七大模組互動頁面已上線（spec 功能清單 F1–F7 核心實作）
-- **當前 Phase**：Phase 10–11 部分完成（學習模式切換器全站；模擬類含開始/暫停/重置）
-- **當前焦點**：內容審查、Playwright E2E、Lighthouse 實測（待運行）
-- **Production**：https://statistics-puce.vercel.app
-- **近 1 小時新完成**：Kickoff 決策 D-001～D-003 已裁定（見 `kickoff-decisions.md`）
+- **整體**：spec 功能清單 **F1–F7 核心互動已實作**；30 個 App 路由；`npm run build` / `npm test` 通過
+- **Production**：[https://statistics-puce.vercel.app](https://statistics-puce.vercel.app)
+- **Repo**：[github.com/captain-balung/statistics](https://github.com/captain-balung/statistics)
+- **本輪狀態**：**暫停開發** — 文件已同步；下回見下方「下回開工」
+
+### Phase 完成度（摘要）
+
+| Phase | 名稱 | 狀態 |
+|-------|------|------|
+| 0 | 工程基底 | ✅ |
+| 1 | 統計函式庫 | ✅（基礎測試 8 項；進階對照 scipy 待補） |
+| 2 | 共用元件 | ✅（核心已用；Axis/RTL 等可擴充） |
+| 3–9 | 模組 1–7 | ✅ |
+| 10 | 學習模式 | 🔄 切換器全站；引導/挑戰內容可加深 |
+| 11 | 上線準備 | ⬜ E2E、Lighthouse、審稿、回滾演練 |
+
+---
+
+## 下回開工（建議順序）
+
+1. **內容**：統計教師抽查 `/content` 與各模組「常見誤解」
+2. **FX-1 加深**：將 `LabModeHints` 接到重點實驗（如 CLT 挑戰自動判定，對應 spec 成功標準 A）
+3. **品質**：Playwright 煙霧測試（首頁 + 模組 1 拖點 + 模組 4 CLT）
+4. **效能**：Lighthouse（首頁、module-4/clt、module-1/data-lab）
+5. **可選**：husky pre-commit、Recharts/D3 未用依賴清理
 
 ---
 
 ## 當前焦點
 
-✅ **全模組互動已上線**（[production](https://statistics-puce.vercel.app)）：模組 1–7 共 22 個子實驗頁；`/lib/statistics` 完整；四種學習模式切換器已接入各實驗室左欄。
+⏸️ **收工中** — 無進行中任務。恢復開發時從「下回開工」擇一項開始。
 
 ---
 
@@ -60,142 +80,37 @@
 
 ---
 
-## 工作分解結構（WBS）
+## 工作分解結構（WBS）— 收工快照
 
-### Phase 0：工程基底 ⬜
+> 以下為本輪實作結果；細項模板見 spec.md。未勾選者留待下回。
 
-#### 0.1 專案初始化 ⬜
+### Phase 0–2 ✅（摘要）
 
-- ✅ 0.1.1 建立 Next.js 專案（手動 scaffold；`npm install`）
-- ✅ 0.1.2–0.1.5 strict TS、Tailwind、依賴、Vitest
-- ✅ 0.2 ESLint、Prettier、CI workflow
-- ✅ 0.4 三欄 layout + 7 模組路由
-- ⬜ 0.1.2 設定 `tsconfig.json` 為 strict 模式
-  - 驗證：`tsc --noEmit` 通過且 strict 相關選項皆 `true`
-- ⬜ 0.1.3 安裝並設定 Tailwind CSS
-  - 驗證：在頁面用 `text-red-500` class 文字變紅
-- ⬜ 0.1.4 安裝 D3、Recharts、Framer Motion、Zustand、mathjs
-  - 驗證：`package.json` 含上述依賴，`pnpm install` 無錯
-- ⬜ 0.1.5 安裝 Vitest、RTL、Playwright
-  - 驗證：建立一個 sanity test 並 `pnpm test` 通過
+- Next.js 15 + TS strict + Tailwind + design tokens
+- `/lib/statistics` 全檔 + `/lib/rng` + Vitest（8 tests）
+- 共用：`ThreeColumnLayout`、`Slider`、`Button`、`ExplanationPanel`、`SimulationControls`、`LearningModeSwitch`
+- GitHub Actions CI；Vercel production 已通
+- ⬜ 未做：husky、Playwright、完整 RTL 元件測試
 
-#### 0.2 程式碼品質工具 ⬜
+### Phase 3–9 ✅（模組對照 spec）
 
-- ⬜ 0.2.1 設定 ESLint（`next/core-web-vitals` + `@typescript-eslint/strict-type-checked`）
-  - 驗證：`pnpm lint` 在乾淨專案上通過
-- ⬜ 0.2.2 設定 Prettier
-  - 驗證：`pnpm format --check` 在乾淨專案上通過
-- ⬜ 0.2.3 設定 husky + lint-staged（pre-commit 跑 lint）
-  - 驗證：故意寫一個 lint 錯誤後 `git commit` 應失敗
+| 模組 | 功能 ID | 路由前綴 |
+|------|---------|----------|
+| 1 | F1-1～F1-3 | `/module-1-descriptive/*` |
+| 2 | F2-1～F2-3 | `/module-2-correlation/*` |
+| 3 | F3-1～F3-3 | `/module-3-probability/*` |
+| 4 | F4-1～F4-4 | `/module-4-normal/*` |
+| 5 | F5-1 | `/module-5-sampling` |
+| 6 | F6-1 | `/module-6-t-distribution` |
+| 7 | F7-1～F7-4c | `/module-7-hypothesis/*` |
 
-#### 0.3 CI/CD 與部署 ⬜
+### Phase 10 🔄
 
-- ⬜ 0.3.1 設定 GitHub Actions（lint + test + build）
-  - 驗證：開一個 PR 後綠燈
-- ⬜ 0.3.2 連接 Vercel 並設定 preview 部署
-  - 驗證：PR 出現 Vercel preview URL 可開啟
-- ⬜ 0.3.3 production 環境設定（D-001 已裁定：Vercel `*.vercel.app`）
-  - 驗證：Vercel 專案 production branch = `main`，production URL 可開啟（首次 deploy 於 Phase 0 程式就緒後）
-  - 前置：人類完成 `human-pipeline-checklist.md` 步驟 3–4
+- ✅ `LearningModeSwitch` + `LabControls` 全實驗室
+- ✅ 模擬模式 + 開始／暫停／重置（CLT、抽樣、LLN 等）
+- ⬜ 各頁引導步驟與挑戰自動評分（`LabModeHints` 待廣泛接入）
 
-#### 0.4 三欄式 layout 骨架 ⬜
-
-- ⬜ 0.4.1 建立 `src/components/layout/ThreeColumnLayout.tsx`
-  - 驗證：傳入三個 children 後，桌面版三欄並排，行動版垂直堆疊
-- ⬜ 0.4.2 建立首頁 `/`，列出 7 大模組連結
-  - 驗證：點擊任一連結進入對應 placeholder 頁面
-- ⬜ 0.4.3 為每個模組建立 placeholder 頁面（用 ThreeColumnLayout）
-  - 驗證：7 個路由都能進入且 layout 正常
-
-### Phase 1：統計函式庫 ⬜
-
-> 預設展開於目前焦點到達時。其他 phase 預設摺疊。
-
-#### 1.1 敘述統計（`/lib/statistics/descriptive.ts`） ⬜
-- ⬜ 1.1.1 `mean`、`median`、`mode`
-- ⬜ 1.1.2 `range`、`variance`、`standardDeviation`（含 sample 選項）
-- ⬜ 1.1.3 上述全部 + edge case 單元測試（空陣列、單一元素、含 NaN）
-
-#### 1.2 相關與回歸（`/lib/statistics/correlation.ts`） ⬜
-- ⬜ 1.2.1 `pearsonR`
-- ⬜ 1.2.2 `linearRegression`（回傳斜率、截距、R²）
-- ⬜ 1.2.3 `sumSquaredErrors`
-- ⬜ 1.2.4 單元測試 + 對照標準資料集（如 Anscombe's quartet）
-
-#### 1.3 分配函數（`/lib/statistics/distributions.ts`） ⬜
-- ⬜ 1.3.1 標準常態 PDF、CDF、inverse CDF
-- ⬜ 1.3.2 一般常態 PDF、CDF（任意 μ, σ）
-- ⬜ 1.3.3 二項式 PMF、CDF
-- ⬜ 1.3.4 t 分配 PDF、CDF、inverse CDF（給定自由度）
-- ⬜ 1.3.5 對照 R/Python scipy 的輸出做單元測試（誤差 < 1e-6）
-
-#### 1.4 推論統計（`/lib/statistics/inference.ts`） ⬜
-- ⬜ 1.4.1 單一樣本 z 檢定
-- ⬜ 1.4.2 單一樣本 t 檢定
-- ⬜ 1.4.3 獨立樣本 t 檢定（含 Welch 與 pooled 兩種）
-- ⬜ 1.4.4 成對樣本 t 檢定
-- ⬜ 1.4.5 對照標準教科書範例做測試
-
-#### 1.5 抽樣模擬（`/lib/statistics/sampling.ts`） ⬜
-- ⬜ 1.5.1 從給定分配抽樣的通用介面
-- ⬜ 1.5.2 均勻、常態、偏態、雙峰、自訂分配的取樣器
-- ⬜ 1.5.3 CLT 模擬引擎（批次抽樣 + 樣本平均）
-
-#### 1.6 Z/PR 換算（`/lib/statistics/conversions.ts`） ⬜
-- ⬜ 1.6.1 `zToPercentileRank`
-- ⬜ 1.6.2 `percentileRankToZ`
-- ⬜ 1.6.3 雙向換算的 round-trip 測試（誤差 < 1e-4）
-
-#### 1.7 可種子化 RNG（`/lib/rng/`） ⬜
-- ⬜ 1.7.1 實作 Mulberry32 或 xoshiro128
-- ⬜ 1.7.2 介面：`createRng(seed: number): () => number`
-- ⬜ 1.7.3 測試：同 seed 必得同序列
-
-### Phase 2：共用元件 ⬜
-
-#### 2.1 控制元件 ⬜
-- ⬜ 2.1.1 `Slider`（含範圍、步進、即時值顯示）
-- ⬜ 2.1.2 `NumberInput`（含驗證、邊界提示）
-- ⬜ 2.1.3 `Button`（含 primary、secondary、danger 樣式）
-- ⬜ 2.1.4 `Toggle`、`RadioGroup`
-- ⬜ 2.1.5 各元件的 RTL 測試（可達性 + 行為）
-
-#### 2.2 視覺化基底 ⬜
-- ⬜ 2.2.1 `Axis`（X 軸、Y 軸，含刻度與標籤）
-- ⬜ 2.2.2 `GridLines`
-- ⬜ 2.2.3 `Legend`
-- ⬜ 2.2.4 `Tooltip`（hover 顯示數值）
-- ⬜ 2.2.5 響應式 SVG container（自動 viewBox）
-
-#### 2.3 解釋區元件 ⬜
-- ⬜ 2.3.1 `ExplanationPanel`（接 MDX 內容）
-- ⬜ 2.3.2 `MisconceptionAlert`（⚠️ 樣式的提醒區塊）
-- ⬜ 2.3.3 `LiveValueDisplay`（綁定當前數值的解讀文字）
-
-#### 2.4 學習模式切換器（為 Phase 10 預留） ⬜
-- ⬜ 2.4.1 `LearningModeSwitch`（探索/引導/挑戰/模擬）
-- ⬜ 2.4.2 Zustand store 儲存當前模式
-
-### Phase 3-9：各模組實作 ⬜
-
-> 結構皆相同，此處摺疊以避免淹沒。展開模板：
->
-> #### 3.x F{ID} - 功能名 ⬜
-> - ⬜ 3.x.1 視覺化區實作（驗證：對應 spec.md 驗收條件）
-> - ⬜ 3.x.2 控制區實作
-> - ⬜ 3.x.3 解釋區內容 + 常見誤解
-> - ⬜ 3.x.4 元件測試
-> - ⬜ 3.x.5 端到端測試（Playwright）
->
-> 葉節點依此模板展開，每模組約 15-25 個葉節點。
-> 詳細展開將在進入該 Phase 前一次到位。
-
-### Phase 10：學習模式擴充 ⬜
-
-> 每個模組需補上「引導／挑戰／模擬」三種模式（探索模式為基本款）。
-> 葉節點將在進入此 Phase 前展開。
-
-### Phase 11：上線準備 ⬜
+### Phase 11 ⬜
 
 #### 11.1 效能 ⬜
 - ⬜ 11.1.1 Lighthouse Performance > 90（首頁、模組首頁、深層子模組各測一個）
