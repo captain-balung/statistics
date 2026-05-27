@@ -31,7 +31,7 @@
 - ✅ **D-002 已裁定**：第一版零 analytics
 - ✅ **D-003 已裁定**：AI 繁中草稿，不標待審，人類事後抽查
 - ✅ **GitHub repo** 已就緒並完成首次 push
-- ⛔ **待人類執行**：Vercel Import（建議現在可做，repo 已有 Next.js）
+- ✅ **Vercel production**：https://statistics-puce.vercel.app
 
 ---
 

@@ -14,7 +14,7 @@
 | **D-003** | 教學文字 | **AI 撰寫繁中草稿，頁面不標「待審」**；人類事後抽查，Phase 11 前可再審 | 模組實作時解釋區可直接寫入 `/content`，不阻塞開發 |
 | **MVP** | 第一個完整里程碑 | **模組 1 全功能**：F1-1 + F1-2 + F1-3 + 探索模式 + 三欄 layout | AI 目標 = Phase 0 → 1 → 2 → 3（含 F1-3） |
 | **REPO** | Git 遠端 | **`https://github.com/captain-balung/statistics`** | 首次 push 含 Next.js 首頁 |
-| **VERCEL** | 部署時機 | **首次 push 後**再由人類 Import（避免空 repo 錯誤） | 見 `human-pipeline-checklist.md` 步驟 3 |
+| **VERCEL** | 部署時機 | 已 Import；production 已上線 | **https://statistics-puce.vercel.app** |
 
 ---
 

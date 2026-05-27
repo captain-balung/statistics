@@ -332,7 +332,7 @@ tTest(sample: number[], populationMean: number, options?: ...): TTestResult
 |---|---|---|---|
 | local | `localhost:3000` | 開發 | 完整除錯、Source map、HMR |
 | preview | Vercel 自動產生 | PR 預覽 | 每個 PR 一個 URL，僅作 review |
-| production | Vercel 預設 `*.vercel.app`（**不綁自訂網域**，見 `kickoff-decisions.md` D-001） | 對外 | minify、CDN；**第一版無 analytics**（D-002） |
+| production | [https://statistics-puce.vercel.app](https://statistics-puce.vercel.app)（Vercel 專案 `statistics`，**不綁自訂網域**，見 `kickoff-decisions.md` D-001） | 對外 | minify、CDN；**第一版無 analytics**（D-002） |
 
 ### 部署步驟
 

@@ -11,8 +11,8 @@
 |---|------|------|------|
 | 1 | 建立 GitHub 空 repo | 人類 | ✅ `captain-balung/statistics` |
 | 2 | 授權 AI 本輪可 `git push` | 人類（對話一句） | ⬜ |
-| 3 | 連接 Vercel ↔ GitHub | 人類 | ⬜ **等首次 push 後再連**（避免空 repo deploy 失敗） |
-| 4 | 確認 Vercel production = `main` | 人類 | ⬜ |
+| 3 | 連接 Vercel ↔ GitHub | 人類 | ✅ production：https://statistics-puce.vercel.app |
+| 4 | 確認 Vercel production = `main` | 人類 | ✅ 預設即 `main`（見下方「第五步找不到」說明） |
 | 5 | 提供 repo URL 給 AI | 人類 | ⬜ |
 | 6 | （可選）邀請協作者 / 確認 Cursor 有 push 權 | 人類 | ⬜ |
 
@@ -51,11 +51,31 @@ AI 在你回覆 URL +「Pipeline 已暢通」後會做：`git init`、首次 com
 
 ---
 
-## 步驟 4：Production 分支
+## 步驟 4：Production 分支（找不到欄位時可跳過）
 
-1. Vercel 專案 → **Settings → Git**
-2. **Production Branch** = `main`
-3. 記下 Vercel 給的 production URL（`*.vercel.app`）→ 可貼回對話，AI 會寫入 `design.md`
+Vercel 新介面常**不顯示**「Production Branch」字樣；若你是用 GitHub 的 **`main`** 建專案且 Visit 已是正式站，**預設就是 `main`**，不必改。
+
+**要自行確認時，任一路徑即可：**
+
+**路徑 A（最直覺）— Deployments**
+
+1. 專案左側 **Deployments**
+2. 最新一筆應有 **Production** 標籤
+3. 點進去 → **Source** / **Git Branch** 應顯示 `main`
+
+**路徑 B — Environments**
+
+1. **Settings** → **Environments**（有時在 Git 上方或 General 附近）
+2. 點 **Production** 環境
+3. 看 **Branch Tracking** 或 **Git Branch** 是否為 `main`
+
+**路徑 C — 舊版 Git 頁**
+
+1. **Settings → Git**（你截圖那頁）
+2. **往下捲到底**；部分帳號在「Connected Git Repository」下方才有 **Production Branch**
+3. 若整頁都沒有 → 用路徑 A 確認即可
+
+Production URL 已記錄：**https://statistics-puce.vercel.app**（見 `design.md`）
 
 ---
 

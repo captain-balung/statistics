@@ -98,6 +98,11 @@
   - 決定：**AI 撰寫繁中草稿，頁面不標「待審」**；人類事後抽查。MVP = **模組 1 全功能 F1-1～F1-3** + 探索模式。
   - 後果：開發不阻塞；人類需安排抽查或 Phase 11 審稿。教學錯誤風險由 AI 對照教科書測試 + 不確定時停下詢問緩解。
 
+### [2026-05-27T14:00:00+08:00] 變更 | Vercel production 上線
+- 觸發來源：人類指示
+- 風險等級：低
+- 內容：Vercel 已連接 `captain-balung/statistics`。Production URL：https://statistics-puce.vercel.app 。已寫入 `design.md`、`kickoff-decisions.md`。
+
 ### [2026-05-27T12:00:00+08:00] 變更 | 首次 push：Next.js 首頁 + 工程骨架
 - 觸發來源：人類指示（repo 就緒；Vercel 延後至 push 後）
 - 風險等級：低
