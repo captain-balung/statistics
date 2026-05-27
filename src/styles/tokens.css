@@ -1,0 +1,15 @@
+:root {
+  --color-bg: #f5f1e8;
+  --color-bg-elevated: #fffef9;
+  --color-ink: #1a1a1a;
+  --color-ink-soft: #4a4a4a;
+  --color-ink-mute: #8a8580;
+  --color-rule: #d8d2c4;
+  --color-accent-red: #d62828;
+  --color-accent-blue: #1d4e89;
+  --color-accent-yellow: #f4b400;
+
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-body: Georgia, 'Times New Roman', serif;
+  --font-mono: 'Consolas', 'Courier New', monospace;
+}
